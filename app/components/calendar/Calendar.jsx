@@ -121,6 +121,7 @@ export default function Calendar() {
                 tasks={tasks}
                 setIsSeeTasks={setIsSeeTasks}
                 setIsAdd={setIsAdd}
+                selectedDate={selectedDate}
               />
             </div>
           </div>

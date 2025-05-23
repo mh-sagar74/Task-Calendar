@@ -3,7 +3,12 @@
 import Button from "@mui/material/Button";
 import AddTaskIcon from "@mui/icons-material/AddTask";
 
-export default function TaskList({ tasks, setIsSeeTasks, setIsAdd }) {
+export default function TaskList({
+  tasks,
+  setIsSeeTasks,
+  setIsAdd,
+  selectedDate,
+}) {
   return (
     <div className="m-6 wrap-anywhere">
       <div className="text-xl font-bold">Task List</div>
@@ -13,7 +18,9 @@ export default function TaskList({ tasks, setIsSeeTasks, setIsAdd }) {
           className="text-left m-3 p-4 border border-gray-300 rounded-sm">
           <div
             className={`${
-              task.taskDay.sDay.getDate() < new Date().getDate()
+              task.taskDay.sDay.getDate() < new Date().getDate() &&
+              task.taskDay.sDay.getMonth() < new Date().getMonth() &&
+              task.taskDay.sDay.getFullYear() < new Date().getFullYear()
                 ? "font-semibold text-red-500 text-center line-through"
                 : "font-semibold text-green-500 text-center"
             }`}>
@@ -35,7 +42,7 @@ export default function TaskList({ tasks, setIsSeeTasks, setIsAdd }) {
           </div>
         </div>
       ))}
-      {tasks.length > 0 ? (
+      {selectedDate.clicked ? (
         <div className="mt-6">
           <Button
             color="secondary"
