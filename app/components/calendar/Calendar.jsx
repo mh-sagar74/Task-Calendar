@@ -10,6 +10,7 @@ import Form from "../tasks/Form";
 import TaskList from "../tasks/TaskList";
 import IconButton from "@mui/material/IconButton";
 import CloseFullscreenIcon from "@mui/icons-material/CloseFullscreen";
+import SelectedDateTaskList from "../tasks/SelectedDateTaskList";
 
 export default function Calendar() {
   const [cDate, setCDate] = useState(new Date());
@@ -23,6 +24,7 @@ export default function Calendar() {
   const [isAdd, setIsAdd] = useState(false);
   const [isSeeTasks, setIsSeeTasks] = useState(false);
   const [tasks, setTasks] = useState([]);
+  const [hasTaskInSelectedDay, setHasTaskInSelectedDay] = useState(false);
 
   useEffect(() => {
     const year = cDate.getFullYear();
@@ -47,13 +49,20 @@ export default function Calendar() {
     setCDate(new Date(cDate.setMonth(cDate.getMonth() - 1)));
   };
 
-  const handleDatePick = (i) => {
-    const selected = daysInMonth.find((day, ind) => ind === i);
+  const handleDatePick = (i, day) => {
+    const selected = daysInMonth.find((d, ind) => ind === i);
     setSelectedDate({
       ...selectedDate,
       sDay: selected,
       clicked: !selectedDate.clicked,
     });
+    if (
+      selected.getDate() === day.getDate() &&
+      selected.getMonth() === day.getMonth() &&
+      selected.getFullYear() === day.getFullYear()
+    ) {
+      setHasTaskInSelectedDay(true);
+    }
   };
 
   return (
@@ -122,11 +131,21 @@ export default function Calendar() {
                 setIsSeeTasks={setIsSeeTasks}
                 setIsAdd={setIsAdd}
                 selectedDate={selectedDate}
+                setHasTaskInSelectedDay={setHasTaskInSelectedDay}
               />
             </div>
           </div>
         )}
       </div>
+      {selectedDate.clicked && hasTaskInSelectedDay ? (
+        <SelectedDateTaskList
+          tasks={tasks}
+          setIsSeeTasks={setIsSeeTasks}
+          setIsAdd={setIsAdd}
+          selectedDate={selectedDate}
+          setHasTaskInSelectedDay={setHasTaskInSelectedDay}
+        />
+      ) : null}
     </div>
   );
 }

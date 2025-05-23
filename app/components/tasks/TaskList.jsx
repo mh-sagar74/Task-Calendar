@@ -8,6 +8,7 @@ export default function TaskList({
   setIsSeeTasks,
   setIsAdd,
   selectedDate,
+  setHasTaskInSelectedDay,
 }) {
   return (
     <div className="m-6 wrap-anywhere">
@@ -54,6 +55,7 @@ export default function TaskList({
             onClick={() => {
               setIsSeeTasks(false);
               setIsAdd(true);
+              setHasTaskInSelectedDay(false);
             }}>
             Add Tasks
           </Button>
