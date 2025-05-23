@@ -35,18 +35,34 @@ export default function TaskList({ tasks, setIsSeeTasks, setIsAdd }) {
           </div>
         </div>
       ))}
-      <div className="mt-6">
-        <Button
-          color="secondary"
-          size="large"
-          endIcon={<AddTaskIcon color="secondary" fontSize="large" />}
-          onClick={() => {
-            setIsSeeTasks(false);
-            setIsAdd(true);
-          }}>
-          Add Tasks
-        </Button>
-      </div>
+      {tasks.length > 0 ? (
+        <div className="mt-6">
+          <Button
+            color="secondary"
+            size="large"
+            endIcon={<AddTaskIcon color="secondary" fontSize="large" />}
+            onClick={() => {
+              setIsSeeTasks(false);
+              setIsAdd(true);
+            }}>
+            Add Tasks
+          </Button>
+        </div>
+      ) : (
+        <div className="mt-6">
+          <Button
+            disabled
+            color="secondary"
+            size="large"
+            endIcon={<AddTaskIcon color="secondary" fontSize="large" />}
+            onClick={() => {
+              setIsSeeTasks(false);
+              setIsAdd(true);
+            }}>
+            Add Tasks
+          </Button>
+        </div>
+      )}
     </div>
   );
 }
