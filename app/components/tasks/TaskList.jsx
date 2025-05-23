@@ -18,9 +18,7 @@ export default function TaskList({
           className="text-left m-3 p-4 border border-gray-300 rounded-sm">
           <div
             className={`${
-              task.taskDay.sDay.getDate() < new Date().getDate() &&
-              task.taskDay.sDay.getMonth() < new Date().getMonth() &&
-              task.taskDay.sDay.getFullYear() < new Date().getFullYear()
+              task.taskDay.sDay < new Date()
                 ? "font-semibold text-red-500 text-center line-through"
                 : "font-semibold text-green-500 text-center"
             }`}>
