@@ -18,7 +18,12 @@ export default function TaskList({
           className="text-left m-3 p-4 border border-gray-300 rounded-sm">
           <div
             className={`${
-              task.taskDay.sDay < new Date()
+              task.taskDay.sDay <
+              new Date(
+                new Date().getFullYear(),
+                new Date().getMonth(),
+                new Date().getDate()
+              )
                 ? "font-semibold text-red-500 text-center line-through"
                 : "font-semibold text-green-500 text-center"
             }`}>
