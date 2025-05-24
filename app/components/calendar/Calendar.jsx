@@ -144,6 +144,7 @@ export default function Calendar() {
           setIsAdd={setIsAdd}
           selectedDate={selectedDate}
           setHasTaskInSelectedDay={setHasTaskInSelectedDay}
+          hasTaskInSelectedDay={hasTaskInSelectedDay}
         />
       ) : null}
     </div>
