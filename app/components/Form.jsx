@@ -34,6 +34,7 @@ export default function Form({
           })}
         </Typography>
         <TextField
+          required
           label="Title"
           value={title}
           onChange={(e) => setTitle(e.target.value)}

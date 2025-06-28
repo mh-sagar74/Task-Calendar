@@ -12,30 +12,33 @@ import TaskBox from "./TaskBox";
 export default function DateBox({ value, daysInMonth, tasks, setTasks }) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  // const [tasks, setTasks] = useState([]);
   const [addTask, setAddTask] = useState(false);
-  const [selectedDate, setSelectedDate] = useState([]);
+  const [selectedDate, setSelectedDate] = useState("");
 
   const handleOpenFormBtn = (value) => {
     const clickedAddBtn = daysInMonth.find((day) => day === value);
-    // console.log(clickedAddBtn);
     setAddTask(true);
     setSelectedDate(clickedAddBtn);
   };
 
   const handleAddTaskBtn = () => {
-    setTasks((pre) => [
-      ...pre,
-      {
-        heading: title,
-        details: description,
-        chosenDate: selectedDate,
-        id: uuidv4(),
-      },
-    ]);
+    if (title) {
+      setTasks((pre) => [
+        ...pre,
+        {
+          heading: title,
+          details: description,
+          chosenDate: selectedDate,
+          id: uuidv4(),
+        },
+      ]);
+    }
     setAddTask(false);
     setTitle("");
     setDescription("");
+    {
+      console.log(tasks);
+    }
   };
 
   const handleCrossBtn = () => {
@@ -122,7 +125,7 @@ export default function DateBox({ value, daysInMonth, tasks, setTasks }) {
         }}>
         {value.getDate()}
       </Typography>
-      <TaskBox tasks={tasks} selectedDate={selectedDate} />
+      <TaskBox tasks={tasks} value={value} />
     </Box>
   );
 }
