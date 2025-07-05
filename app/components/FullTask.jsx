@@ -15,7 +15,7 @@ export default function FullTask({
     <Box>
       <Dialog open={openFullTask} onClose={() => setOpenFullTask(false)}>
         <DialogTitle>
-          <Typography variant="h4" gutterBottom>
+          <Typography gutterBottom sx={{ fontSize: "30px" }}>
             Task for{" "}
             {viewFullTask.chosenDate.toLocaleDateString("default", {
               weekday: "long",

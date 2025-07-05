@@ -9,6 +9,7 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import KeyboardDoubleArrowLeftIcon from "@mui/icons-material/KeyboardDoubleArrowLeft";
 import KeyboardDoubleArrowRightIcon from "@mui/icons-material/KeyboardDoubleArrowRight";
 import IconButton from "@mui/material/IconButton";
+import AllTasks from "./AllTasks";
 
 export default function Calendar() {
   const weeks = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
@@ -57,119 +58,128 @@ export default function Calendar() {
   };
 
   return (
-    <Box
-      sx={{
-        backgroundColor: "yellow",
-        justifyItems: "center",
-        paddingTop: "20px",
-        paddingBottom: "20px",
-      }}>
-      <Box
-        sx={{
-          backgroundColor: "red",
-          width: "1100px",
-          paddingBottom: "5px",
-          paddingTop: "10px",
-          borderTopLeftRadius: "70px",
-          borderTopRightRadius: "70px",
-        }}>
-        <Typography
-          variant="h3"
-          gutterBottom
-          sx={{ textAlign: "center" }}
-          onClick={handleCurrentDate}>
-          CALENDAR - {currentDate.getFullYear()}
-        </Typography>
-        <Stack
-          direction={"row"}
-          spacing={5}
+    <Box sx={{ display: "flex", justifyContent: "space-between" }}>
+      <Box sx={{ width: "1080px" }}>
+        <Box
           sx={{
-            alignItems: "center",
-            justifyContent: "center",
+            backgroundColor: "red",
+            color: "white",
+            paddingBottom: "5px",
+            paddingTop: "10px",
+            borderTopLeftRadius: "70px",
+            borderTopRightRadius: "70px",
           }}>
-          <IconButton size="large" onClick={handlePrevYear}>
-            <KeyboardDoubleArrowLeftIcon fontSize="inherit" />
-          </IconButton>
-          <IconButton size="large" onClick={handlePrevMonth}>
-            <KeyboardArrowLeftIcon fontSize="inherit" />
-          </IconButton>
-          <Typography variant="h5">
-            {currentDate.toLocaleString("default", { month: "long" })}
+          <Typography
+            variant="h4"
+            sx={{ textAlign: "center", fontWeight: "bold" }}
+            onClick={handleCurrentDate}>
+            CALENDAR - {currentDate.getFullYear()}
           </Typography>
-          <IconButton size="large" onClick={handleNextMonthBtn}>
-            <KeyboardArrowRightIcon fontSize="inherit" />
-          </IconButton>
-          <IconButton size="large" onClick={handleNextYearBtn}>
-            <KeyboardDoubleArrowRightIcon fontSize="inherit" />
-          </IconButton>
-        </Stack>
-      </Box>
-      <Box sx={{ backgroundColor: "#001d3d", paddingTop: "20px" }}>
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            width: "1100px",
-            justifySelf: "center",
-          }}>
-          {weeks.map((week) => (
-            <Typography
-              variant="h6"
-              gutterBottom
-              key={uuidv4()}
-              sx={{
-                width: "120px",
-                paddingTop: "5px",
-                paddingBottom: "5px",
-                textAlign: "center",
-                backgroundColor: "#001d3d",
-                border: "1px solid white",
-                color: "white",
-                marginLeft: "15px",
-                marginRight: "15px",
-                borderRadius: "6px",
-                marginBottom: "30px",
-              }}>
-              {week}
+          <Stack
+            direction={"row"}
+            spacing={5}
+            sx={{
+              alignItems: "center",
+              justifyContent: "center",
+            }}>
+            <IconButton size="large" onClick={handlePrevYear} color="inherit">
+              <KeyboardDoubleArrowLeftIcon fontSize="inherit" />
+            </IconButton>
+            <IconButton size="large" onClick={handlePrevMonth} color="inherit">
+              <KeyboardArrowLeftIcon fontSize="inherit" />
+            </IconButton>
+            <Typography variant="h5" sx={{ fontWeight: "bold" }}>
+              {currentDate.toLocaleString("default", { month: "long" })}
             </Typography>
-          ))}
+            <IconButton
+              size="large"
+              onClick={handleNextMonthBtn}
+              color="inherit">
+              <KeyboardArrowRightIcon fontSize="inherit" />
+            </IconButton>
+            <IconButton
+              size="large"
+              onClick={handleNextYearBtn}
+              color="inherit">
+              <KeyboardDoubleArrowRightIcon fontSize="inherit" />
+            </IconButton>
+          </Stack>
         </Box>
         <Box
           sx={{
-            display: "flex",
-            width: "1050px",
-            justifySelf: "center",
-            flexWrap: "wrap",
+            backgroundColor: "#001d3d",
+            paddingTop: "20px",
+            borderBottomLeftRadius: "5px",
+            borderBottomRightRadius: "5px",
           }}>
-          {Array.from({ length: startDate }).map((_) => (
-            <Box
-              key={uuidv4()}
-              sx={{
-                width: "120px",
-                height: "120px",
-                textAlign: "center",
-                backgroundColor: "#001d3d",
-                border: "1px solid white",
-                borderRadius: "6px",
-                marginLeft: "15px",
-                marginRight: "15px",
-                justifyItems: "center",
-                overflow: "auto",
-                position: "relative",
-                marginBottom: "30px",
-              }}
-            />
-          ))}
-          {daysInMonth.map((days) => (
-            <DateBox
-              key={days}
-              value={days}
-              daysInMonth={daysInMonth}
-              tasks={tasks}
-              setTasks={setTasks}
-            />
-          ))}
+          <Box
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              justifySelf: "center",
+            }}>
+            {weeks.map((week) => (
+              <Typography
+                variant="h6"
+                gutterBottom
+                key={uuidv4()}
+                sx={{
+                  width: "120px",
+                  paddingTop: "5px",
+                  paddingBottom: "5px",
+                  textAlign: "center",
+                  backgroundColor: "#001d3d",
+                  border: "1px solid white",
+                  color: "white",
+                  marginLeft: "15px",
+                  marginRight: "15px",
+                  borderRadius: "6px",
+                  marginBottom: "30px",
+                }}>
+                {week}
+              </Typography>
+            ))}
+          </Box>
+          <Box
+            sx={{
+              display: "flex",
+              width: "1050px",
+              justifySelf: "center",
+              flexWrap: "wrap",
+            }}>
+            {Array.from({ length: startDate }).map((_) => (
+              <Box
+                key={uuidv4()}
+                sx={{
+                  width: "120px",
+                  height: "120px",
+                  textAlign: "center",
+                  backgroundColor: "#001d3d",
+                  border: "1px solid white",
+                  borderRadius: "6px",
+                  marginLeft: "15px",
+                  marginRight: "15px",
+                  justifyItems: "center",
+                  overflow: "auto",
+                  position: "relative",
+                  marginBottom: "30px",
+                }}
+              />
+            ))}
+            {daysInMonth.map((days) => (
+              <DateBox
+                key={days}
+                value={days}
+                daysInMonth={daysInMonth}
+                tasks={tasks}
+                setTasks={setTasks}
+              />
+            ))}
+          </Box>
         </Box>
+      </Box>
+      <Box sx={{ width: "450px" }}>
+        <AllTasks tasks={tasks} />
       </Box>
     </Box>
   );

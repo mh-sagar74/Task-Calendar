@@ -5,12 +5,10 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
-  IconButton,
   Typography,
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import FullTask from "./FullTask";
-import CancelIcon from "@mui/icons-material/Cancel";
 
 export default function TaskBox({ tasks, value }) {
   const [viewFullTaskClicked, setViewFullTaskClicked] = useState(false);
@@ -114,7 +112,7 @@ export default function TaskBox({ tasks, value }) {
                 onClick={() => handleFullViewTask(task)}
                 key={task.id}
                 sx={{
-                  width: "320px",
+                  width: "356px",
                   backgroundColor: "#219ebc",
                   color: "white",
                   borderRadius: "3px",

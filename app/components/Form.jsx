@@ -44,12 +44,22 @@ export default function Form({
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <Button
-          variant="contained"
-          endIcon={<AddCircleTwoToneIcon />}
-          onClick={handleAddTaskBtn}>
-          ADD
-        </Button>
+        {title ? (
+          <Button
+            variant="contained"
+            endIcon={<AddCircleTwoToneIcon />}
+            onClick={handleAddTaskBtn}>
+            ADD
+          </Button>
+        ) : (
+          <Button
+            disabled
+            variant="contained"
+            endIcon={<AddCircleTwoToneIcon />}
+            onClick={handleAddTaskBtn}>
+            ADD
+          </Button>
+        )}
       </Grid>
     </Box>
   );
