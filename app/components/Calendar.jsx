@@ -62,7 +62,7 @@ export default function Calendar() {
       <Box sx={{ width: "1080px" }}>
         <Box
           sx={{
-            backgroundColor: "red",
+            backgroundColor: "rgba(255, 0, 0, 0.6)",
             color: "white",
             paddingBottom: "5px",
             paddingTop: "10px",
@@ -107,7 +107,7 @@ export default function Calendar() {
         </Box>
         <Box
           sx={{
-            backgroundColor: "#001d3d",
+            backgroundColor: "rgba(0, 29, 61,0.6)",
             paddingTop: "20px",
             borderBottomLeftRadius: "5px",
             borderBottomRightRadius: "5px",
@@ -128,7 +128,7 @@ export default function Calendar() {
                   paddingTop: "5px",
                   paddingBottom: "5px",
                   textAlign: "center",
-                  backgroundColor: "#001d3d",
+                  backgroundColor: "#rgba(0, 29, 61,0.6)",
                   border: "1px solid white",
                   color: "white",
                   marginLeft: "15px",
@@ -154,7 +154,7 @@ export default function Calendar() {
                   width: "120px",
                   height: "120px",
                   textAlign: "center",
-                  backgroundColor: "#001d3d",
+                  backgroundColor: "rgba(0, 29, 61,0.6)",
                   border: "1px solid white",
                   borderRadius: "6px",
                   marginLeft: "15px",

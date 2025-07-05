@@ -95,7 +95,8 @@ export default function TaskBox({ tasks, value }) {
             </Typography>
           ))}
         <Dialog open={seeMore} onClose={handleCloseSeeMore}>
-          <DialogTitle>
+          <DialogTitle
+            sx={{ backgroundColor: "rgba(0, 29, 61)", color: "white" }}>
             <Typography sx={{ fontSize: "24px" }}>
               Tasks in{" "}
               {value.toLocaleDateString("default", {
@@ -106,7 +107,7 @@ export default function TaskBox({ tasks, value }) {
               })}
             </Typography>
           </DialogTitle>
-          <DialogContent>
+          <DialogContent sx={{ backgroundColor: "rgba(0, 29, 61)" }}>
             {tasksInOneDay.map((task) => (
               <Typography
                 onClick={() => handleFullViewTask(task)}

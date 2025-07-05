@@ -14,7 +14,8 @@ export default function FullTask({
   return (
     <Box>
       <Dialog open={openFullTask} onClose={() => setOpenFullTask(false)}>
-        <DialogTitle>
+        <DialogTitle
+          sx={{ backgroundColor: "rgba(0, 29, 61)", color: "white" }}>
           <Typography gutterBottom sx={{ fontSize: "30px" }}>
             Task for{" "}
             {viewFullTask.chosenDate.toLocaleDateString("default", {
@@ -25,7 +26,8 @@ export default function FullTask({
             })}
           </Typography>
         </DialogTitle>
-        <DialogContent>
+        <DialogContent
+          sx={{ backgroundColor: "rgba(0, 29, 61)", color: "white" }}>
           <Typography gutterBottom sx={{ fontSize: "24px" }}>
             <span className="font-bold">Task Title :</span>{" "}
             {viewFullTask.heading}

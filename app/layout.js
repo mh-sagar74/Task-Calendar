@@ -1,3 +1,4 @@
+import React, { Suspense } from "react";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 
@@ -14,7 +15,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${roboto.className} antialiased m-3`}>{children}</body>
+      <body className={`${roboto.className} antialiased`}>
+        <Suspense>{children}</Suspense>
+      </body>
     </html>
   );
 }

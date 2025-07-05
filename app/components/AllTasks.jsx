@@ -29,7 +29,7 @@ export default function AllTasks({ tasks }) {
     <Box>
       <Box
         sx={{
-          backgroundColor: "red",
+          backgroundColor: "rgba(255, 0, 0, 0.6)",
           color: "white",
           paddingBottom: "5px",
           paddingTop: "10px",
@@ -44,7 +44,7 @@ export default function AllTasks({ tasks }) {
       </Box>
       <Box
         sx={{
-          backgroundColor: "#001d3d",
+          backgroundColor: "rgba(0, 29, 61,0.6)",
           padding: "15px",
           height: "896px",
           borderBottomLeftRadius: "5px",
@@ -101,7 +101,8 @@ export default function AllTasks({ tasks }) {
       </Box>
       {viewFullTaskClicked && (
         <Dialog open={showTask} onClose={handleCloseTask}>
-          <DialogTitle>
+          <DialogTitle
+            sx={{ backgroundColor: "rgba(0, 29, 61)", color: "white" }}>
             <Typography gutterBottom sx={{ fontSize: "30px" }}>
               Task for{" "}
               {selectedTask.chosenDate.toLocaleDateString("default", {
@@ -112,7 +113,8 @@ export default function AllTasks({ tasks }) {
               })}
             </Typography>
           </DialogTitle>
-          <DialogContent>
+          <DialogContent
+            sx={{ backgroundColor: "rgba(0, 29, 61)", color: "white" }}>
             <Typography gutterBottom sx={{ fontSize: "24px" }}>
               <span className="font-bold">Task Title :</span>{" "}
               {selectedTask.heading}

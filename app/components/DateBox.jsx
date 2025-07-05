@@ -53,7 +53,7 @@ export default function DateBox({ value, daysInMonth, tasks, setTasks }) {
         width: "120px",
         height: "120px",
         textAlign: "center",
-        backgroundColor: "#001d3d",
+        backgroundColor: "rgba(0, 29, 61,0.6)",
         border: "1px solid white",
         borderRadius: "6px",
         marginLeft: "15px",
@@ -82,7 +82,7 @@ export default function DateBox({ value, daysInMonth, tasks, setTasks }) {
             }}>
             <Box
               sx={{
-                backgroundColor: "white",
+                backgroundColor: "rgba(253, 240, 213)",
                 height: "480px",
                 width: "900px",
                 alignContent: "center",
