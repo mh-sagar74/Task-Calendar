@@ -73,7 +73,7 @@ export default function TaskBox({ tasks, value }) {
         {tasksInOneDay.length > 2 &&
           tasksInOneDay.slice(0, 1).map((task) => (
             <Typography
-              onClick={() => handleSeeMore()}
+              onClick={handleSeeMore}
               key={task.id}
               sx={{
                 width: "110px",

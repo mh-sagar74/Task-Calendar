@@ -1,6 +1,30 @@
-import { Box, Typography } from "@mui/material";
+"use client";
+
+import {
+  Box,
+  Dialog,
+  DialogContent,
+  DialogTitle,
+  Typography,
+} from "@mui/material";
+import { useState } from "react";
 
 export default function AllTasks({ tasks }) {
+  const [showTask, setShowTask] = useState(false);
+  const [selectedTask, setSelectedTask] = useState({});
+  const [viewFullTaskClicked, setViewFullTaskClicked] = useState(false);
+
+  const handleShowTask = (key) => {
+    const oneTask = tasks.find((task) => task.id === key);
+    setSelectedTask(oneTask);
+    setShowTask(true);
+    setViewFullTaskClicked(true);
+  };
+
+  const handleCloseTask = () => {
+    setShowTask(false);
+  };
+
   return (
     <Box>
       <Box
@@ -32,6 +56,7 @@ export default function AllTasks({ tasks }) {
             tasks.map((task) => (
               <Box
                 key={task.id}
+                onClick={() => handleShowTask(task.id)}
                 sx={{
                   display: "flex",
                   justifyContent: "space-between",
@@ -74,6 +99,31 @@ export default function AllTasks({ tasks }) {
           )}
         </Box>
       </Box>
+      {viewFullTaskClicked && (
+        <Dialog open={showTask} onClose={handleCloseTask}>
+          <DialogTitle>
+            <Typography gutterBottom sx={{ fontSize: "30px" }}>
+              Task for{" "}
+              {selectedTask.chosenDate.toLocaleDateString("default", {
+                weekday: "long",
+                day: "numeric",
+                month: "long",
+                year: "numeric",
+              })}
+            </Typography>
+          </DialogTitle>
+          <DialogContent>
+            <Typography gutterBottom sx={{ fontSize: "24px" }}>
+              <span className="font-bold">Task Title :</span>{" "}
+              {selectedTask.heading}
+            </Typography>
+            <Typography gutterBottom sx={{ fontSize: "24px" }}>
+              <span className="font-bold">Task Description :</span>{" "}
+              {selectedTask.details}
+            </Typography>
+          </DialogContent>
+        </Dialog>
+      )}
     </Box>
   );
 }
