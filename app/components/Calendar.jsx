@@ -57,22 +57,35 @@ export default function Calendar() {
   };
 
   return (
-    <Box>
-      <Typography
-        variant="h3"
-        gutterBottom
-        sx={{ textAlign: "center" }}
-        onClick={handleCurrentDate}>
-        CALENDAR - {currentDate.getFullYear()}
-      </Typography>
-      <Box>
+    <Box
+      sx={{
+        backgroundColor: "yellow",
+        justifyItems: "center",
+        paddingTop: "20px",
+        paddingBottom: "20px",
+      }}>
+      <Box
+        sx={{
+          backgroundColor: "red",
+          width: "1100px",
+          paddingBottom: "5px",
+          paddingTop: "10px",
+          borderTopLeftRadius: "70px",
+          borderTopRightRadius: "70px",
+        }}>
+        <Typography
+          variant="h3"
+          gutterBottom
+          sx={{ textAlign: "center" }}
+          onClick={handleCurrentDate}>
+          CALENDAR - {currentDate.getFullYear()}
+        </Typography>
         <Stack
           direction={"row"}
           spacing={5}
           sx={{
             alignItems: "center",
             justifyContent: "center",
-            margin: "20px",
           }}>
           <IconButton size="large" onClick={handlePrevYear}>
             <KeyboardDoubleArrowLeftIcon fontSize="inherit" />
@@ -90,11 +103,13 @@ export default function Calendar() {
             <KeyboardDoubleArrowRightIcon fontSize="inherit" />
           </IconButton>
         </Stack>
+      </Box>
+      <Box sx={{ backgroundColor: "#001d3d", paddingTop: "20px" }}>
         <Box
           sx={{
             display: "flex",
             justifyContent: "center",
-            width: "1450px",
+            width: "1100px",
             justifySelf: "center",
           }}>
           {weeks.map((week) => (
@@ -103,15 +118,16 @@ export default function Calendar() {
               gutterBottom
               key={uuidv4()}
               sx={{
-                width: "177px",
+                width: "120px",
                 paddingTop: "5px",
                 paddingBottom: "5px",
                 textAlign: "center",
-                backgroundColor: "gray",
+                backgroundColor: "#001d3d",
+                border: "1px solid white",
                 color: "white",
                 marginLeft: "15px",
                 marginRight: "15px",
-                borderRadius: "3px",
+                borderRadius: "6px",
                 marginBottom: "30px",
               }}>
               {week}
@@ -121,7 +137,7 @@ export default function Calendar() {
         <Box
           sx={{
             display: "flex",
-            width: "1450px",
+            width: "1050px",
             justifySelf: "center",
             flexWrap: "wrap",
           }}>
@@ -129,11 +145,12 @@ export default function Calendar() {
             <Box
               key={uuidv4()}
               sx={{
-                width: "177px",
-                height: "250px",
+                width: "120px",
+                height: "120px",
                 textAlign: "center",
-                backgroundColor: "gray",
-                borderRadius: "3px",
+                backgroundColor: "#001d3d",
+                border: "1px solid white",
+                borderRadius: "6px",
                 marginLeft: "15px",
                 marginRight: "15px",
                 justifyItems: "center",

@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Typography } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import AddBoxRoundedIcon from "@mui/icons-material/AddBoxRounded";
 import { useState } from "react";
 import IconButton from "@mui/material/IconButton";
@@ -50,15 +50,15 @@ export default function DateBox({ value, daysInMonth, tasks, setTasks }) {
   return (
     <Box
       sx={{
-        width: "177px",
-        height: "250px",
+        width: "120px",
+        height: "120px",
         textAlign: "center",
-        backgroundColor: "gray",
-        borderRadius: "3px",
+        backgroundColor: "#001d3d",
+        border: "1px solid white",
+        borderRadius: "6px",
         marginLeft: "15px",
         marginRight: "15px",
         justifyItems: "center",
-        overflow: "auto",
         position: "relative",
         marginBottom: "30px",
       }}>
@@ -117,9 +117,9 @@ export default function DateBox({ value, daysInMonth, tasks, setTasks }) {
             value.getMonth() === new Date().getMonth() &&
             value.getDate() === new Date().getDate() && {
               backgroundColor: "purple",
-              paddingLeft: "5px",
-              paddingRight: "5px",
-              borderRadius: "50%",
+              paddingLeft: "10px",
+              paddingRight: "10px",
+              borderRadius: "5px",
               fontWeight: "bold",
             }),
         }}>
