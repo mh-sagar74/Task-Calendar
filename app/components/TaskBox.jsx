@@ -4,7 +4,6 @@ import {
   Box,
   Dialog,
   DialogContent,
-  DialogContentText,
   DialogTitle,
   IconButton,
   Typography,
@@ -12,13 +11,13 @@ import {
 import { useEffect, useState } from "react";
 import FullTask from "./FullTask";
 import CancelIcon from "@mui/icons-material/Cancel";
-import { Weekend } from "@mui/icons-material";
 
 export default function TaskBox({ tasks, value }) {
   const [viewFullTaskClicked, setViewFullTaskClicked] = useState(false);
   const [viewFullTask, setViewFullTask] = useState({});
   const [tasksInOneDay, setTasksInOneDay] = useState([]);
   const [seeMore, setSeeMore] = useState(false);
+  const [openFullTask, setOpenFullTask] = useState(false);
 
   useEffect(() => {
     const dayTask = tasks.filter(
@@ -33,14 +32,8 @@ export default function TaskBox({ tasks, value }) {
   const handleFullViewTask = (task) => {
     setViewFullTask(task);
     setViewFullTaskClicked(true);
+    setOpenFullTask(true);
     setSeeMore(false);
-  };
-
-  const handleCrossBtn = () => {
-    setViewFullTaskClicked(false);
-    if (tasksInOneDay.length > 2) {
-      setSeeMore(true);
-    }
   };
 
   const handleSeeMore = () => {
@@ -143,40 +136,13 @@ export default function TaskBox({ tasks, value }) {
           </DialogContent>
         </Dialog>
       </Box>
-      <Box sx={{ position: "relative" }}>
-        {viewFullTaskClicked && (
-          <Box
-            sx={{
-              position: "fixed",
-              inset: 0,
-              zIndex: 7,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              backgroundColor: "rgba(255,255,255, 0.5)",
-              backdropFilter: "brightness(50%)",
-            }}>
-            <Box
-              sx={{
-                backgroundColor: "white",
-                height: "480px",
-                width: "900px",
-                alignContent: "center",
-                borderRadius: "10px",
-                position: "relative",
-                overflow: "auto",
-              }}>
-              <IconButton
-                sx={{ position: "absolute", right: "15px", top: "15px" }}
-                size="large"
-                onClick={handleCrossBtn}>
-                <CancelIcon color="error" fontSize="inherit" />
-              </IconButton>
-              <FullTask viewFullTask={viewFullTask} />
-            </Box>
-          </Box>
-        )}
-      </Box>
+      {viewFullTaskClicked && (
+        <FullTask
+          viewFullTask={viewFullTask}
+          openFullTask={openFullTask}
+          setOpenFullTask={setOpenFullTask}
+        />
+      )}
     </Box>
   );
 }
