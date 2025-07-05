@@ -113,7 +113,7 @@ export default function TaskBox({ tasks, value }) {
                 onClick={() => handleFullViewTask(task)}
                 key={task.id}
                 sx={{
-                  width: "356px",
+                  width: "100%",
                   backgroundColor: "#219ebc",
                   color: "white",
                   borderRadius: "3px",
