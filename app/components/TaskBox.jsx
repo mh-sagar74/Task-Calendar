@@ -121,6 +121,8 @@ export default function TaskBox({ tasks, value }) {
                   textAlign: "left",
                   paddingLeft: "5px",
                   paddingRight: "5px",
+                  paddingTop: "3px",
+                  paddingBottom: "3px",
                   fontSize: "12px",
                   ":hover": {
                     cursor: "pointer",
