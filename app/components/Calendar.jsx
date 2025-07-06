@@ -17,6 +17,8 @@ export default function Calendar() {
   const [daysInMonth, setDaysInMonth] = useState([]);
   const [startDate, setStartDate] = useState(0);
   const [tasks, setTasks] = useState([]);
+  const [searchPrompts, setSearchPrompts] = useState("");
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     const year = currentDate.getFullYear();
@@ -173,13 +175,21 @@ export default function Calendar() {
                 daysInMonth={daysInMonth}
                 tasks={tasks}
                 setTasks={setTasks}
+                setSearchPrompts={setSearchPrompts}
+                setSearchValue={setSearchValue}
               />
             ))}
           </Box>
         </Box>
       </Box>
       <Box sx={{ width: "450px" }}>
-        <AllTasks tasks={tasks} />
+        <AllTasks
+          tasks={tasks}
+          searchPrompts={searchPrompts}
+          setSearchPrompts={setSearchPrompts}
+          setSearchValue={setSearchValue}
+          searchValue={searchValue}
+        />
       </Box>
     </Box>
   );

@@ -9,7 +9,14 @@ import CancelIcon from "@mui/icons-material/Cancel";
 import { v4 as uuidv4 } from "uuid";
 import TaskBox from "./TaskBox";
 
-export default function DateBox({ value, daysInMonth, tasks, setTasks }) {
+export default function DateBox({
+  value,
+  daysInMonth,
+  tasks,
+  setTasks,
+  setSearchPrompts,
+  setSearchValue,
+}) {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [addTask, setAddTask] = useState(false);
@@ -32,6 +39,8 @@ export default function DateBox({ value, daysInMonth, tasks, setTasks }) {
           id: uuidv4(),
         },
       ]);
+      setSearchPrompts("");
+      setSearchValue("");
     }
     setAddTask(false);
     setTitle("");

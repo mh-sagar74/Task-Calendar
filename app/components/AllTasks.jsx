@@ -12,11 +12,16 @@ import {
 import { useEffect, useState } from "react";
 import ContentPasteSearchIcon from "@mui/icons-material/ContentPasteSearch";
 
-export default function AllTasks({ tasks }) {
+export default function AllTasks({
+  tasks,
+  setSearchPrompts,
+  searchPrompts,
+  setSearchValue,
+  searchValue,
+}) {
   const [showTask, setShowTask] = useState(false);
   const [selectedTask, setSelectedTask] = useState({});
   const [viewFullTaskClicked, setViewFullTaskClicked] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
   const [searchedTaskes, setSearchedTasks] = useState([]);
 
   const handleShowTask = (key) => {
@@ -38,14 +43,22 @@ export default function AllTasks({ tasks }) {
     setSearchValue(e.target.value);
     if (!searchValue) {
       setSearchedTasks(tasks);
+      setSearchPrompts("");
     }
   };
 
   const handleSearchBtn = () => {
     const searchRes = tasks.filter(
-      (task) => task.heading.toLowerCase() === searchValue.toLowerCase()
+      (task) =>
+        task.chosenDate.getDate() +
+          "/" +
+          (task.chosenDate.getMonth() + 1) +
+          "/" +
+          task.chosenDate.getFullYear() ===
+        searchValue
     );
     setSearchedTasks(searchRes);
+    setSearchPrompts(searchValue);
   };
 
   return (
@@ -59,11 +72,19 @@ export default function AllTasks({ tasks }) {
           borderTopLeftRadius: "50px",
           borderTopRightRadius: "50px",
         }}>
-        <Typography
-          variant="h4"
-          sx={{ textAlign: "center", fontWeight: "bold" }}>
-          All Tasks
-        </Typography>
+        {searchValue ? (
+          <Typography
+            variant="h4"
+            sx={{ textAlign: "center", fontWeight: "bold" }}>
+            Tasks in {searchPrompts}
+          </Typography>
+        ) : (
+          <Typography
+            variant="h4"
+            sx={{ textAlign: "center", fontWeight: "bold" }}>
+            All Tasks
+          </Typography>
+        )}
       </Box>
       <Box
         sx={{
@@ -77,13 +98,13 @@ export default function AllTasks({ tasks }) {
               variant="outlined"
               label="Search"
               value={searchValue}
+              placeholder="d/m/yyyy"
               onChange={handleSearchValue}
               sx={{
                 "& .MuiOutlinedInput-root": {
                   color: "white",
 
                   "& .MuiOutlinedInput-notchedOutline": {
-                    // borderBottom: "1px solid black",
                     border: "1px solid rgba(255, 0, 0, 0.3)",
                   },
                 },
