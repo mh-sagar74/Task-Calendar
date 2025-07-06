@@ -36,9 +36,6 @@ export default function DateBox({ value, daysInMonth, tasks, setTasks }) {
     setAddTask(false);
     setTitle("");
     setDescription("");
-    {
-      console.log(tasks);
-    }
   };
 
   const handleCrossBtn = () => {
