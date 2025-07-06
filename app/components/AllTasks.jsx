@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import { useEffect, useState } from "react";
 import ContentPasteSearchIcon from "@mui/icons-material/ContentPasteSearch";
+import DeleteIcon from "@mui/icons-material/Delete";
 
 export default function AllTasks({
   tasks,
@@ -18,6 +19,7 @@ export default function AllTasks({
   searchPrompts,
   setSearchValue,
   searchValue,
+  setTasks,
 }) {
   const [showTask, setShowTask] = useState(false);
   const [selectedTask, setSelectedTask] = useState({});
@@ -43,8 +45,14 @@ export default function AllTasks({
     setSearchValue(e.target.value);
     if (!searchValue) {
       setSearchedTasks(tasks);
-      setSearchPrompts("");
     }
+  };
+
+  const handleDeleteBtn = (key) => {
+    const handleDelete = tasks.filter((task) => task.id !== key);
+    setTasks(handleDelete);
+    setSearchPrompts("");
+    setSearchValue("");
   };
 
   const handleSearchBtn = () => {
@@ -143,7 +151,6 @@ export default function AllTasks({
             {searchedTaskes.map((task) => (
               <Box
                 key={task.id}
-                onClick={() => handleShowTask(task.id)}
                 sx={{
                   display: "flex",
                   justifyContent: "space-between",
@@ -160,18 +167,41 @@ export default function AllTasks({
                     transition: "0.2s",
                   },
                 }}>
-                <Typography sx={{ color: "white" }}>
-                  <span>{task.heading.slice(0, 25)}</span>
-                  {task.heading.length > 25 && <span>...</span>}
-                </Typography>
-                <Typography sx={{ color: "white" }}>
-                  {task.chosenDate.toLocaleDateString("default", {
-                    weekday: "long",
-                    day: "numeric",
-                    month: "long",
-                    year: "numeric",
-                  })}
-                </Typography>
+                <Box
+                  onClick={() => handleShowTask(task.id)}
+                  display={"flex"}
+                  gap={3}
+                  width={"100%"}>
+                  <Typography
+                    sx={{
+                      color: "white",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}>
+                    <span>{task.heading.slice(0, 25)}</span>
+                    {task.heading.length > 25 && <span>...</span>}
+                  </Typography>
+                  <Typography
+                    sx={{
+                      color: "white",
+                      display: "flex",
+                      justifyContent: "center",
+                      alignItems: "center",
+                    }}>
+                    {task.chosenDate.toLocaleDateString("default", {
+                      weekday: "long",
+                      day: "numeric",
+                      month: "long",
+                      year: "numeric",
+                    })}
+                  </Typography>
+                </Box>
+                <IconButton
+                  sx={{ color: "white" }}
+                  onClick={() => handleDeleteBtn(task.id)}>
+                  <DeleteIcon />
+                </IconButton>
               </Box>
             ))}
           </Box>
@@ -181,7 +211,6 @@ export default function AllTasks({
               tasks.map((task) => (
                 <Box
                   key={task.id}
-                  onClick={() => handleShowTask(task.id)}
                   sx={{
                     display: "flex",
                     justifyContent: "space-between",
@@ -198,18 +227,41 @@ export default function AllTasks({
                       transition: "0.2s",
                     },
                   }}>
-                  <Typography sx={{ color: "white" }}>
-                    <span>{task.heading.slice(0, 25)}</span>
-                    {task.heading.length > 25 && <span>...</span>}
-                  </Typography>
-                  <Typography sx={{ color: "white" }}>
-                    {task.chosenDate.toLocaleDateString("default", {
-                      weekday: "long",
-                      day: "numeric",
-                      month: "long",
-                      year: "numeric",
-                    })}
-                  </Typography>
+                  <Box
+                    onClick={() => handleShowTask(task.id)}
+                    display={"flex"}
+                    gap={3}
+                    width={"100%"}>
+                    <Typography
+                      sx={{
+                        color: "white",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}>
+                      <span>{task.heading.slice(0, 25)}</span>
+                      {task.heading.length > 25 && <span>...</span>}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        color: "white",
+                        display: "flex",
+                        justifyContent: "center",
+                        alignItems: "center",
+                      }}>
+                      {task.chosenDate.toLocaleDateString("default", {
+                        weekday: "long",
+                        day: "numeric",
+                        month: "long",
+                        year: "numeric",
+                      })}
+                    </Typography>
+                  </Box>
+                  <IconButton
+                    sx={{ color: "white" }}
+                    onClick={() => handleDeleteBtn(task.id)}>
+                    <DeleteIcon />
+                  </IconButton>
                 </Box>
               ))
             ) : (

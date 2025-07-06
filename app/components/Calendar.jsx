@@ -189,6 +189,7 @@ export default function Calendar() {
           setSearchPrompts={setSearchPrompts}
           setSearchValue={setSearchValue}
           searchValue={searchValue}
+          setTasks={setTasks}
         />
       </Box>
     </Box>
