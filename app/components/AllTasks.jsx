@@ -42,7 +42,9 @@ export default function AllTasks({ tasks }) {
   };
 
   const handleSearchBtn = () => {
-    const searchRes = tasks.filter((task) => task.heading === searchValue);
+    const searchRes = tasks.filter(
+      (task) => task.heading.toLowerCase() === searchValue.toLowerCase()
+    );
     setSearchedTasks(searchRes);
   };
 
@@ -88,7 +90,6 @@ export default function AllTasks({ tasks }) {
               <IconButton
                 size="large"
                 sx={{ color: "white" }}
-                type="submit"
                 onClick={handleSearchBtn}>
                 <ContentPasteSearchIcon fontSize="inherit" />
               </IconButton>
