@@ -79,9 +79,16 @@ export default function AllTasks({ tasks }) {
               value={searchValue}
               onChange={handleSearchValue}
               sx={{
+                "& .MuiFilledInput-root": {
+                  "& .MuiFilledInput-notchedOutline": {
+                    borderColor: "white",
+                    color: "white",
+                  },
+                },
                 input: { color: "white" },
                 "& .MuiFormLabel-root": {
                   color: "white",
+                  borderColor: "white",
                 },
                 width: "87%",
               }}
@@ -105,7 +112,7 @@ export default function AllTasks({ tasks }) {
         sx={{
           backgroundColor: "rgba(0, 29, 61,0.6)",
           padding: "15px",
-          height: "896px",
+          height: "846px",
           borderBottomLeftRadius: "5px",
           borderBottomRightRadius: "5px",
           overflow: "auto",
