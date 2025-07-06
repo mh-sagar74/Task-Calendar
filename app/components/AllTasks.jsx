@@ -74,21 +74,21 @@ export default function AllTasks({ tasks }) {
         {tasks.length > 0 && (
           <Box>
             <TextField
-              variant="filled"
+              variant="outlined"
               label="Search"
               value={searchValue}
               onChange={handleSearchValue}
               sx={{
-                "& .MuiFilledInput-root": {
-                  "& .MuiFilledInput-notchedOutline": {
-                    borderColor: "white",
-                    color: "white",
+                "& .MuiOutlinedInput-root": {
+                  color: "white",
+
+                  "& .MuiOutlinedInput-notchedOutline": {
+                    // borderBottom: "1px solid black",
+                    border: "1px solid rgba(255, 0, 0, 0.3)",
                   },
                 },
-                input: { color: "white" },
-                "& .MuiFormLabel-root": {
+                "& .MuiInputLabel-outlined": {
                   color: "white",
-                  borderColor: "white",
                 },
                 width: "87%",
               }}
