@@ -37,6 +37,13 @@ export default function AllTasks({
     setSearchedTasks(tasks);
   }, [tasks]);
 
+  useEffect(() => {
+    if (searchValue.length < 8) {
+      setSearchPrompts("");
+      setSearchedTasks(tasks);
+    }
+  });
+
   const handleCloseTask = () => {
     setShowTask(false);
   };
